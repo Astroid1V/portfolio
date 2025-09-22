@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denvar Musarara | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --text: #333;
+      --text-light: #777;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* ===== Base Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: #f9f9f9;
+      padding-bottom: 2rem;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h1, h2, h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    ul {
+      list-style-position: inside;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== Header Styles ===== */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+      color: white;
+      padding: 2.5rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-info a {
+      color: #64b5f6;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-info a:hover {
+      color: #bbdefb;
+    }
+
+    /* ===== Skills Section ===== */
+    .skills-container {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .skills-list li {
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    /* ===== Projects Section ===== */
+    .project {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .project h3 {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--light);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== Gallery Styles ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 150px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+      display: block;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item .fallback-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+      opacity: 1;
+      transition: var(--transition);
+    }
+
+    .gallery-item.has-image .fallback-text {
+      opacity: 0;
+    }
+
+    .gallery-item:hover .fallback-text {
+      opacity: 0;
+    }
+
+    .gallery-item::after {
+      content: "↗";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 2;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* ===== Modal Styles ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content-container {
+      position: relative;
+      max-width: 90%;
+      max-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      display: block;
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-placeholder {
+      width: 800px;
+      height: 600px;
+      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      border-radius: 8px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .modal-caption {
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 1.2rem;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 1001;
+    }
+
+    .close:hover {
+      color: var(--accent);
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      transform: translateY(-50%);
+      z-index: 1001;
+    }
+
+    .nav-btn {
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--secondary);
+    }
+
+    /* ===== Hobbies Section ===== */
+    .hobbies-container {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* ===== Footer Styles ===== */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      .gallery-item {
+        height: 120px;
+        font-size: 14px;
+      }
+
+      .modal-content {
+        max-width: 95%;
+      }
+
+      .modal-placeholder {
+        width: 90vw;
+        height: 50vh;
+        font-size: 18px;
+      }
+
+      .close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+      }
+
+      .nav-btn {
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .skills-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modal-nav {
+        padding: 0 10px;
+      }
+
+      .nav-btn {
+        font-size: 24px;
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    /* ===== Decorative Elements ===== */
+    .section-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--secondary), transparent);
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Denvar Musarara</h1>
+      <p>BSc (Hons) Informatics and Analytics | National University of Science and Technology</p>
+      <div class="contact-info">
+        <p>
+          <a href="mailto:denvarmusarara@gmail.com">
+            <i class="fas fa-envelope"></i>denvarmusarara@gmail.com
+          </a>
+        </p>
+        <p>
+          <a href="https://github.com/denvarmusarara" target="_blank">
+            <i class="fab fa-github"></i>GitHub
+          </a>
+        </p>
+        <p>
+          <a href="https://linkedin.com/in/denvarmusarara" target="_blank">
+            <i class="fab fa-linkedin"></i>LinkedIn
+          </a>
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-container">
+        <ul class="skills-list">
+          <li><i class="fas fa-code"></i> Programming: Python, JavaScript, R, C/C++</li>
+          <li><i class="fas fa-laptop-code"></i> Web Development: HTML5, React.js, Bootstrap, CSS</li>
+          <li><i class="fas fa-database"></i> Data & Systems: Data Analysis, System Analysis, Development & Configuration</li>
+          <li><i class="fas fa-server"></i> Databases: SQL, MySQL</li>
+          <li><i class="fas fa-chart-line"></i> Data Science: Data Mining, Modelling, Machine Learning</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Projects</h2>
+
+      <div class="project">
+        <h3>Interactive Disease Outbreak Prediction Dashboard</h3>
+        <p>
+          Built an interactive dashboard that predicts outbreak patterns using data analysis and machine 
+          learning, with dynamic visualizations mimicking real-life scenarios.
+        </p>
+        <div class="gallery">
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease1.png.png" data-caption="Dashboard Database">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\disease1.png.png" alt="Dashboard Database" onerror="handleImageError(this)">
+            <div class="fallback-text">Dashboard Database</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease2.png.png" data-caption="Dashboard Signup">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\disease2.png.png" alt="Dashboard Signup" onerror="handleImageError(this)">
+            <div class="fallback-text">Dashboard Signup</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease3.png.png" data-caption="Dashboard Login">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\disease3.png.png" alt="Dashboard Login" onerror="handleImageError(this)">
+            <div class="fallback-text">Dashboard Login</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease4.png.png" data-caption="Dashboard Overview">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\disease4.png.png" alt="Dashboard Overview" onerror="handleImageError(this)">
+            <div class="fallback-text">Dashboard Overview</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease5.png.png" data-caption="Dashboard Hotspots">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\disease5.png.png" alt="Dashboard Hotspots" onerror="handleImageError(this)">
+            <div class="fallback-text">Dashboard Hotspots</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease6.png.png" data-caption="Dashboard Predictions">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\disease6.png.png" alt="Dashboard Predictions" onerror="handleImageError(this)">
+            <div class="fallback-text">Dashboard Predictions</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease7.png.png" data-caption="Dashboard Summary Report">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\disease7.png.png" alt="Dashboard Summary Report" onerror="handleImageError(this)">
+            <div class="fallback-text">Dashboard Summary Report</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Smart Bin Monitoring System</h3>
+        <p>
+          A web-based application designed to monitor waste bins in real time. 
+          Developed as a group project at NUST, the system tracks bin levels and 
+          alerts for timely collection to improve waste management efficiency.
+        </p>
+        <div class="gallery">
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\bin1.png.png" data-caption="Bin Status Overview">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\bin1.png.png" alt="Smart Bin Screenshot 1" onerror="handleImageError(this)">
+            <div class="fallback-text">Bin Status Overview</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\bin2.png.png" data-caption="Real-time Monitoring">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\bin2.png.png" alt="Smart Bin Screenshot 2" onerror="handleImageError(this)">
+            <div class="fallback-text">Real-time Monitoring</div>
+          </div>
+          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\bin3.png.png" data-caption="Collection Alerts">
+            <img src="C:\Users\Dee\Desktop\portfolio\images\bin3.png.png" alt="Smart Bin Screenshot 3" onerror="handleImageError(this)">
+            <div class="fallback-text">Collection Alerts</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Hobbies</h2>
+      <div class="hobbies-container">
+        <p><i class="fas fa-chess"></i> Chess (strategic thinking, problem-solving), Technology research, and building personal projects.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Denvar Musarara | Portfolio</p>
+    </footer>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-nav">
+      <span class="nav-btn" onclick="changeImage(-1)">&#10094;</span>
+      <span class="nav-btn" onclick="changeImage(1)">&#10095;</span>
+    </div>
+    <div class="modal-content-container">
+      <img class="modal-content" id="modalImage">
+      <div class="modal-placeholder" id="modalPlaceholder">Image not found. Please add your images to the images folder.</div>
+    </div>
+    <div class="modal-caption" id="modalCaption"></div>
+  </div>
+
+  <script>
+    // Modal functionality
+    let currentImageIndex = 0;
+    const images = [];
+    const captions = [];
+    
+    // Handle image errors in gallery
+    function handleImageError(img) {
+      img.style.display = 'none';
+      img.parentElement.classList.remove('has-image');
+    }
+    
+    // Handle image load in gallery
+    function handleImageLoad(img) {
+      img.parentElement.classList.add('has-image');
+    }
+    
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all gallery items
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      
+      // Add click event to each gallery item
+      galleryItems.forEach((item, index) => {
+        const img = item.querySelector('img');
+        const imgSrc = item.getAttribute('data-src');
+        const imgCaption = item.getAttribute('data-caption');
+        
+        // Store image data for modal navigation
+        images.push(imgSrc);
+        captions.push(imgCaption);
+        
+        // Set up image load/error handlers
+        img.onerror = function() {
+          handleImageError(this);
+        };
+        
+        img.onload = function() {
+          handleImageLoad(this);
+        };
+        
+        // Trigger initial check
+        if (img.complete) {
+          if (img.naturalHeight === 0) {
+            handleImageError(img);
+          } else {
+            handleImageLoad(img);
+          }
+        }
+        
+        // Add click event
+        item.addEventListener('click', () => {
+          openModal(index);
+        });
+      });
+    });
+    
+    function openModal(index) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const captionText = document.getElementById('modalCaption');
+      const placeholder = document.getElementById('modalPlaceholder');
+      
+      // Set current image index
+      currentImageIndex = index;
+      
+      // Set image and caption
+      modalImg.src = images[currentImageIndex];
+      captionText.innerHTML = captions[currentImageIndex];
+      
+      // Handle modal image error
+      modalImg.onerror = function() {
+        this.style.display = 'none';
+        placeholder.style.display = 'flex';
+      };
+      
+      modalImg.onload = function() {
+        this.style.display = 'block';
+        placeholder.style.display = 'none';
+      };
+      
+      // Show modal
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+    
+    function changeImage(direction) {
+      currentImageIndex += direction;
+      
+      // Cycle through images
+      if (currentImageIndex >= images.length) currentImageIndex = 0;
+      if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+      
+      const modalImg = document.getElementById('modalImage');
+      const captionText = document.getElementById('modalCaption');
+      const placeholder = document.getElementById('modalPlaceholder');
+      
+      modalImg.src = images[currentImageIndex];
+      captionText.innerHTML = captions[currentImageIndex];
+      
+      // Handle modal image error
+      modalImg.onerror = function() {
+        this.style.display = 'none';
+        placeholder.style.display = 'flex';
+      };
+      
+      modalImg.onload = function() {
+        this.style.display = 'block';
+        placeholder.style.display = 'none';
+      };
+    }
+    
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      } else if (event.key === 'ArrowLeft') {
+        changeImage(-1);
+      } else if (event.key === 'ArrowRight') {
+        changeImage(1);
+      }
+    });
+  </script>
+
+</body>
+</html>
