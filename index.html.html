@@ -173,7 +173,6 @@
       transition: var(--transition);
       height: 150px;
       cursor: pointer;
-      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
     }
 
     .gallery-item img {
@@ -181,37 +180,10 @@
       height: 100%;
       object-fit: cover;
       transition: var(--transition);
-      display: block;
     }
 
     .gallery-item:hover img {
       transform: scale(1.05);
-    }
-
-    .gallery-item .fallback-text {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      padding: 10px;
-      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-      opacity: 1;
-      transition: var(--transition);
-    }
-
-    .gallery-item.has-image .fallback-text {
-      opacity: 0;
-    }
-
-    .gallery-item:hover .fallback-text {
-      opacity: 0;
     }
 
     .gallery-item::after {
@@ -230,7 +202,6 @@
       font-size: 14px;
       opacity: 0;
       transition: var(--transition);
-      z-index: 2;
     }
 
     .gallery-item:hover::after {
@@ -259,35 +230,12 @@
       justify-content: center;
     }
 
-    .modal-content-container {
-      position: relative;
-      max-width: 90%;
-      max-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .modal-content {
       display: block;
-      max-width: 100%;
+      max-width: 90%;
       max-height: 80vh;
       border-radius: 8px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .modal-placeholder {
-      width: 800px;
-      height: 600px;
-      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      border-radius: 8px;
-      text-align: center;
-      padding: 20px;
     }
 
     .modal-caption {
@@ -379,17 +327,10 @@
       
       .gallery-item {
         height: 120px;
-        font-size: 14px;
       }
 
       .modal-content {
         max-width: 95%;
-      }
-
-      .modal-placeholder {
-        width: 90vw;
-        height: 50vh;
-        font-size: 18px;
       }
 
       .close {
@@ -448,28 +389,30 @@
 <body>
 
   <div class="container">
+    <!-- ===== HEADER ===== -->
     <header>
       <h1>Denvar Musarara</h1>
       <p>BSc (Hons) Informatics and Analytics | National University of Science and Technology</p>
       <div class="contact-info">
         <p>
-          <a href="mailto:denvarmusarara@gmail.com">
+          <a href="mailto:denvarmusarara@gmail.com" target="_blank" rel="noopener">
             <i class="fas fa-envelope"></i>denvarmusarara@gmail.com
           </a>
         </p>
         <p>
-          <a href="https://github.com/denvarmusarara" target="_blank">
+          <a href="https://github.com/Astroid1V" target="_blank" rel="noopener">
             <i class="fab fa-github"></i>GitHub
           </a>
         </p>
         <p>
-          <a href="https://linkedin.com/in/denvarmusarara" target="_blank">
+          <a href="https://linkedin.com/in/denvarmusarara" target="_blank" rel="noopener">
             <i class="fab fa-linkedin"></i>LinkedIn
           </a>
         </p>
       </div>
     </header>
 
+    <!-- ===== SKILLS ===== -->
     <section>
       <h2 class="section-title">Skills</h2>
       <div class="skills-container">
@@ -483,9 +426,11 @@
       </div>
     </section>
 
+    <!-- ===== PROJECTS ===== -->
     <section>
       <h2 class="section-title">Projects</h2>
 
+      <!-- Project 1 -->
       <div class="project">
         <h3>Interactive Disease Outbreak Prediction Dashboard</h3>
         <p>
@@ -493,37 +438,31 @@
           learning, with dynamic visualizations mimicking real-life scenarios.
         </p>
         <div class="gallery">
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease1.png.png" data-caption="Dashboard Database">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\disease1.png.png" alt="Dashboard Database" onerror="handleImageError(this)">
-            <div class="fallback-text">Dashboard Database</div>
+          <div class="gallery-item" data-src="images/disease1.png" data-caption="Dashboard Screenshot 1">
+            <img src="images/disease1.png" alt="Dashboard Screenshot 1">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease2.png.png" data-caption="Dashboard Signup">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\disease2.png.png" alt="Dashboard Signup" onerror="handleImageError(this)">
-            <div class="fallback-text">Dashboard Signup</div>
+          <div class="gallery-item" data-src="images/disease2.png" data-caption="Dashboard Screenshot 2">
+            <img src="images/disease2.png" alt="Dashboard Screenshot 2">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease3.png.png" data-caption="Dashboard Login">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\disease3.png.png" alt="Dashboard Login" onerror="handleImageError(this)">
-            <div class="fallback-text">Dashboard Login</div>
+          <div class="gallery-item" data-src="images/disease3.png" data-caption="Dashboard Screenshot 3">
+            <img src="images/disease3.png" alt="Dashboard Screenshot 3">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease4.png.png" data-caption="Dashboard Overview">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\disease4.png.png" alt="Dashboard Overview" onerror="handleImageError(this)">
-            <div class="fallback-text">Dashboard Overview</div>
+          <div class="gallery-item" data-src="images/disease4.png" data-caption="Dashboard Screenshot 4">
+            <img src="images/disease4.png" alt="Dashboard Screenshot 4">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease5.png.png" data-caption="Dashboard Hotspots">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\disease5.png.png" alt="Dashboard Hotspots" onerror="handleImageError(this)">
-            <div class="fallback-text">Dashboard Hotspots</div>
+          <div class="gallery-item" data-src="images/disease5.png" data-caption="Dashboard Screenshot 5">
+            <img src="images/disease5.png" alt="Dashboard Screenshot 5">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease6.png.png" data-caption="Dashboard Predictions">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\disease6.png.png" alt="Dashboard Predictions" onerror="handleImageError(this)">
-            <div class="fallback-text">Dashboard Predictions</div>
+          <div class="gallery-item" data-src="images/disease6.png" data-caption="Dashboard Screenshot 6">
+            <img src="images/disease6.png" alt="Dashboard Screenshot 6">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\disease7.png.png" data-caption="Dashboard Summary Report">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\disease7.png.png" alt="Dashboard Summary Report" onerror="handleImageError(this)">
-            <div class="fallback-text">Dashboard Summary Report</div>
+          <div class="gallery-item" data-src="images/disease7.png" data-caption="Dashboard Screenshot 7">
+            <img src="images/disease7.png" alt="Dashboard Screenshot 7">
           </div>
         </div>
       </div>
 
+      <!-- Project 2 -->
       <div class="project">
         <h3>Smart Bin Monitoring System</h3>
         <p>
@@ -532,22 +471,20 @@
           alerts for timely collection to improve waste management efficiency.
         </p>
         <div class="gallery">
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\bin1.png.png" data-caption="Bin Status Overview">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\bin1.png.png" alt="Smart Bin Screenshot 1" onerror="handleImageError(this)">
-            <div class="fallback-text">Bin Status Overview</div>
+          <div class="gallery-item" data-src="images/bin1.png" data-caption="Smart Bin Screenshot 1">
+            <img src="images/bin1.png" alt="Smart Bin Screenshot 1">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\bin2.png.png" data-caption="Real-time Monitoring">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\bin2.png.png" alt="Smart Bin Screenshot 2" onerror="handleImageError(this)">
-            <div class="fallback-text">Real-time Monitoring</div>
+          <div class="gallery-item" data-src="images/bin2.png" data-caption="Smart Bin Screenshot 2">
+            <img src="images/bin2.png" alt="Smart Bin Screenshot 2">
           </div>
-          <div class="gallery-item" data-src="C:\Users\Dee\Desktop\portfolio\images\bin3.png.png" data-caption="Collection Alerts">
-            <img src="C:\Users\Dee\Desktop\portfolio\images\bin3.png.png" alt="Smart Bin Screenshot 3" onerror="handleImageError(this)">
-            <div class="fallback-text">Collection Alerts</div>
+          <div class="gallery-item" data-src="images/bin3.png" data-caption="Smart Bin Screenshot 3">
+            <img src="images/bin3.png" alt="Smart Bin Screenshot 3">
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ===== HOBBIES ===== -->
     <section>
       <h2 class="section-title">Hobbies</h2>
       <div class="hobbies-container">
@@ -555,21 +492,20 @@
       </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
       <p>© 2025 Denvar Musarara | Portfolio</p>
     </footer>
   </div>
 
+  <!-- ===== Image Modal ===== -->
   <div id="imageModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-nav">
       <span class="nav-btn" onclick="changeImage(-1)">&#10094;</span>
       <span class="nav-btn" onclick="changeImage(1)">&#10095;</span>
     </div>
-    <div class="modal-content-container">
-      <img class="modal-content" id="modalImage">
-      <div class="modal-placeholder" id="modalPlaceholder">Image not found. Please add your images to the images folder.</div>
-    </div>
+    <img class="modal-content" id="modalImage">
     <div class="modal-caption" id="modalCaption"></div>
   </div>
 
@@ -579,17 +515,6 @@
     const images = [];
     const captions = [];
     
-    // Handle image errors in gallery
-    function handleImageError(img) {
-      img.style.display = 'none';
-      img.parentElement.classList.remove('has-image');
-    }
-    
-    // Handle image load in gallery
-    function handleImageLoad(img) {
-      img.parentElement.classList.add('has-image');
-    }
-    
     // Initialize when page loads
     document.addEventListener('DOMContentLoaded', function() {
       // Get all gallery items
@@ -597,31 +522,12 @@
       
       // Add click event to each gallery item
       galleryItems.forEach((item, index) => {
-        const img = item.querySelector('img');
         const imgSrc = item.getAttribute('data-src');
         const imgCaption = item.getAttribute('data-caption');
         
         // Store image data for modal navigation
         images.push(imgSrc);
         captions.push(imgCaption);
-        
-        // Set up image load/error handlers
-        img.onerror = function() {
-          handleImageError(this);
-        };
-        
-        img.onload = function() {
-          handleImageLoad(this);
-        };
-        
-        // Trigger initial check
-        if (img.complete) {
-          if (img.naturalHeight === 0) {
-            handleImageError(img);
-          } else {
-            handleImageLoad(img);
-          }
-        }
         
         // Add click event
         item.addEventListener('click', () => {
@@ -634,7 +540,6 @@
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
       const captionText = document.getElementById('modalCaption');
-      const placeholder = document.getElementById('modalPlaceholder');
       
       // Set current image index
       currentImageIndex = index;
@@ -642,17 +547,6 @@
       // Set image and caption
       modalImg.src = images[currentImageIndex];
       captionText.innerHTML = captions[currentImageIndex];
-      
-      // Handle modal image error
-      modalImg.onerror = function() {
-        this.style.display = 'none';
-        placeholder.style.display = 'flex';
-      };
-      
-      modalImg.onload = function() {
-        this.style.display = 'block';
-        placeholder.style.display = 'none';
-      };
       
       // Show modal
       modal.classList.add('show');
@@ -674,21 +568,9 @@
       
       const modalImg = document.getElementById('modalImage');
       const captionText = document.getElementById('modalCaption');
-      const placeholder = document.getElementById('modalPlaceholder');
       
       modalImg.src = images[currentImageIndex];
       captionText.innerHTML = captions[currentImageIndex];
-      
-      // Handle modal image error
-      modalImg.onerror = function() {
-        this.style.display = 'none';
-        placeholder.style.display = 'flex';
-      };
-      
-      modalImg.onload = function() {
-        this.style.display = 'block';
-        placeholder.style.display = 'none';
-      };
     }
     
     // Close modal when clicking outside the image
